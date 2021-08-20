@@ -5,6 +5,8 @@ import { ButtonAdd } from '../../components/ButtonAdd';
 import { Profile } from '../../components/Profile';
 import { Styles } from './styles';
 import { ListHeader } from '../../components/ListHeader';
+import { Appointment } from '../../components/Appointment';
+import { ListDivider } from '../../components/ListDivider';
 
 export function Home() {
   const [category, setCategory] = useState('');
@@ -14,6 +16,18 @@ export function Home() {
       id: '1',
       guild: {
         id: '1',
+        name: 'Lendários',
+        icon: null,
+        owner: true
+      },
+      category: '1',
+      date: '22/06 às 20:40h',
+      description: 'É hoje que vamos chegar ao challenger sem perder uma partida da md10'
+    },
+    {
+      id: '2',
+      guild: {
+        id: '2',
         name: 'Lendários',
         icon: null,
         owner: true
@@ -34,24 +48,25 @@ export function Home() {
         <Profile />
         <ButtonAdd />
       </View>
-      <View>
-        <CategorySelect
-          categorySelected={category}
-          setCategory={handleCategorySelect}
+      <CategorySelect
+        categorySelected={category}
+        setCategory={handleCategorySelect}
+      />
+      <View style={Styles.content}>
+        <ListHeader
+          title="Partidas Agendadas"
+          subtitle="Total 6"
         />
-        <View style={Styles.content}>
-          <ListHeader
-            title="Partidas Agendadas"
-            subtitle="Total 6"
-          />
-          <FlatList
-            data={appointments}
-            keyExtractor={item => item.id}
-            renderItem={({ item }) => (
-              <Text>{item.guild.name}</Text>
-            )}
-          />
-        </View>
+        <FlatList
+          data={appointments}
+          keyExtractor={item => item.id}
+          renderItem={({ item }) => (
+            <Appointment data={item} />
+          )}
+          ItemSeparatorComponent={() => <ListDivider />}
+          style={Styles.matches}
+          showsHorizontalScrollIndicator={false}
+        />
       </View>
     </View>
   );
