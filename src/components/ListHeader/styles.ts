@@ -1,27 +1,21 @@
 import { StyleSheet } from 'react-native';
 import { theme } from '../../global/styles/theme';
 
-export const Styles = StyleSheet.create({
+export const styles = StyleSheet.create({
   container: {
+    width: '100%',
     flexDirection: 'row',
-    alignItems: 'center',
+    justifyContent: 'space-between',
+    paddingHorizontal: 24
   },
-  user: {
-    flexDirection: 'row',
-  },
-  greeting: {
-    fontFamily: theme.fonts.title500,
-    fontSize: 24,
-    color: theme.colors.heading,
-    marginRight: 5,
-  },
-  username: {
+  title: {
     fontFamily: theme.fonts.title700,
-    fontSize: 24,
     color: theme.colors.heading,
+    fontSize: 18
   },
-  message: {
+  subtitle: {
     fontFamily: theme.fonts.text400,
     color: theme.colors.higlight,
+    fontSize: 13
   }
 });
